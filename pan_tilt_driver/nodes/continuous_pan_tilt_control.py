@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+# -*- coding: utf-8 -*-
 import rospy
 from pan_tilt_msgs.msg import PanTiltCmdDeg
 
@@ -17,7 +17,7 @@ def continuous_movement(yaw, speed, pitch_min, pitch_max, rate_hz=10):
         cmd.pitch = pitch
         cmd.speed = speed
         
-        rospy.loginfo(f"Moviendo a Yaw: {yaw}, Pitch: {pitch}, Speed: {speed}")
+        rospy.loginfo("Moviendo a Yaw: {}, Pitch: {}, Speed: {}".format(yaw, pitch, speed))
         pub.publish(cmd)
 
         pitch += direction * speed / rate_hz
@@ -32,10 +32,10 @@ def continuous_movement(yaw, speed, pitch_min, pitch_max, rate_hz=10):
 
 if __name__ == '__main__':
     try:
-        yaw = float(input("Ingrese el valor de yaw (ej. 0): "))
-        speed = float(input("Ingrese el valor de speed (ej. 1): "))
-        pitch_min = float(input("Ingrese el valor de pitch mínimo (ej. -30): "))
-        pitch_max = float(input("Ingrese el valor de pitch máximo (ej. 30): "))
+        yaw = float(input("yaw (-60 to 60): "))
+        speed = float(input("Ingrese el valor de speed (1 to 30): "))
+        pitch_min = float(input("Ingrese el valor de pitch mínimo (minimun -60): "))
+        pitch_max = float(input("Ingrese el valor de pitch máximo (maximum 60): "))
         continuous_movement(yaw, speed, pitch_min, pitch_max)
     except rospy.ROSInterruptException:
         pass
