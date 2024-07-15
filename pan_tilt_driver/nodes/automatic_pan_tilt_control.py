@@ -7,10 +7,10 @@ def slowly_movement(rate_hz=20):
     pub = rospy.Publisher('/pan_tilt_cmd_deg', PanTiltCmdDeg, queue_size=10)
     rospy.init_node('continuous_pan_tilt_control', anonymous=True)
     rate = rospy.Rate(rate_hz)  # Rate in Hz
-    yaw = -10 
+    yaw = -14 
     speed = 1
-    pitch_min = -8.0
-    pitch_max = 8.0
+    pitch_min = -15.0
+    pitch_max = 15.0
     direction = 1  # 1 for increasing, -1 for decreasing
 
     while not rospy.is_shutdown():
