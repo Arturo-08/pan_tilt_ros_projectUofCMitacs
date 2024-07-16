@@ -3,11 +3,11 @@
 import rospy
 from pan_tilt_msgs.msg import PanTiltCmdDeg
 
-def slowly_movement(rate_hz=20):
+def slowly_movement(rate_hz=0.166666667):
     pub = rospy.Publisher('/pan_tilt_cmd_deg', PanTiltCmdDeg, queue_size=10)
     rospy.init_node('continuous_pan_tilt_control', anonymous=True)
     rate = rospy.Rate(rate_hz)  # Rate in Hz
-    yaw = -14 
+    yaw = -16.0
     speed = 1
     pitch_min = -15.0
     pitch_max = 15.0
@@ -22,7 +22,7 @@ def slowly_movement(rate_hz=20):
         rospy.loginfo("Current Yaw: {}, Pitch: {}, Speed: {}".format(yaw, pitch, speed))
         pub.publish(cmd)
 
-        pitch += direction * speed / rate_hz
+        pitch += direction * 0.05
 
         # Reverse direction at limits
         if pitch >= pitch_max:

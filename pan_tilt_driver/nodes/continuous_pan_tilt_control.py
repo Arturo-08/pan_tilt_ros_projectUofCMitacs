@@ -33,7 +33,7 @@ def continuous_movement(yaw, speed, pitch_min, pitch_max, rate_hz):
 if __name__ == '__main__':
     try:
         while True:
-            yaw = float(input("Input the yaw value (-55 to 55) Set -14.0 to align the platform well: "))
+            yaw = float(input("Input the yaw value (-55 to 55) Set -16.0 to align the platform well: "))
             if(yaw > 55 or yaw < -55 or not yaw):
                 print ("Invalid yaw value. Try again.")
             else:
